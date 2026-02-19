@@ -3,8 +3,9 @@ Between projects work: A chrome extension where every page you are on is a chat 
 
 ## AI prompt logging (Copilot hooks)
 
-This repo logs every submitted Copilot prompt payload to `ai\prompts\prompt-log.jsonl` via `.github\hooks\prompt-log.json`.
+This repo logs every submitted Copilot prompt to `ai\prompts\solita-markump-prompts.md` via `.github\hooks\prompt-log.json`.
+Each line format is: `<timestamp> > <prompt>`.
 
 Quick checks:
-- Latest entries: `Get-Content .\ai\prompts\prompt-log.jsonl -Tail 20`
-- Full log: `Get-Content .\ai\prompts\prompt-log.jsonl`
+- Latest entries: `Get-Content .\ai\prompts\solita-markump-prompts.md -Tail 20`
+- Full log: `Get-Content .\ai\prompts\solita-markump-prompts.md`

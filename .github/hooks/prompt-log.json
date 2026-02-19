@@ -4,8 +4,8 @@
     "userPromptSubmitted": [
       {
         "type": "command",
-        "bash": "cat >> ai/prompts/prompt-log.jsonl",
-        "powershell": "$input | Add-Content -Path ai\\prompts\\prompt-log.jsonl",
+        "bash": "raw=\"$(cat)\"; prompt=\"$(printf '%s' \"$raw\" | sed -n 's/.*\"prompt\"[[:space:]]*:[[:space:]]*\"\\([^\"]*\\)\".*/\\1/p')\"; [ -n \"$prompt\" ] || prompt=\"$raw\"; prompt=\"$(printf '%s' \"$prompt\" | tr '\\n' ' ' | sed 's/[[:space:]]\\+/ /g')\"; [ -n \"$prompt\" ] && printf '%s > %s\\n' \"$(date '+%Y-%m-%d %H:%M:%S')\" \"$prompt\" >> ai/prompts/solita-markump-prompts.md",
+        "powershell": "$raw = [Console]::In.ReadToEnd(); $obj = $null; try { $obj = $raw | ConvertFrom-Json -Depth 20 } catch { }; $prompt = if ($obj -and $obj.prompt) { [string]$obj.prompt } elseif ($obj -and $obj.userPrompt) { [string]$obj.userPrompt } elseif ($obj -and $obj.message) { [string]$obj.message } elseif ($obj -and $obj.input) { [string]$obj.input } else { $raw }; $prompt = ($prompt -replace \"`r?`n\", \" \").Trim(); if ($prompt) { New-Item -ItemType Directory -Path ai\\prompts -Force | Out-Null; Add-Content -Path ai\\prompts\\solita-markump-prompts.md -Value \"$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss') > $prompt\" }",
         "cwd": ".",
         "timeoutSec": 5
       }
