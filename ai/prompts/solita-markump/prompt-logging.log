@@ -1,3 +1,9 @@
+2026-02-19 17:04:00
+Add to readme that the log files should be part of git and should not be added to gitignore
+
+2026-02-19 17:00:14
+Analyze the project structure on the prompt logging hook. Does it make sense? How would you improve? Confirm with me before modifying
+
 2026-02-19 16:56:06
 yo
 
