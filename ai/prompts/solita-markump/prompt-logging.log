@@ -1,3 +1,17 @@
+2026-02-19 17:21:06
+Based on this information I want to change @scripts\prompt-log.ps1 script. I want to get rid of the config variable @.github\hooks\prompt-log-username 
+
+We shall use user.email as the foldername. Modify the script but be as simple as possible and don't do any fancy fallback things.
+
+2026-02-19 17:18:52
+for user.email is it a must have value or can it be null/unset? Will push fail?
+
+2026-02-19 17:17:47
+what if I change my user.email to some gibberish? can I still push?
+
+2026-02-19 17:16:50
+What is then my github account and how is it related to all this? my github username is solita-markump
+
 2026-02-19 17:04:00
 Add to readme that the log files should be part of git and should not be added to gitignore
 

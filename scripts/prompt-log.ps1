@@ -17,17 +17,16 @@ $prompt = if ($obj -and $obj.prompt) {
 $prompt = ($prompt -replace "`r", "").Trim()
 if (-not $prompt) { exit 0 }
 
-$configPath = ".github\hooks\prompt-log-username"
-if (-not (Test-Path $configPath)) { exit 0 }
-
-$username = (Get-Content -Path $configPath -TotalCount 1).Trim()
-if (-not $username) { exit 0 }
+$email = git config --get user.email 2>$null
+if (-not $email) { exit 0 }
+$email = $email.Trim()
+if (-not $email) { exit 0 }
 
 $branch = git rev-parse --abbrev-ref HEAD 2>$null
 if (-not $branch -or $branch -eq 'HEAD') { exit 0 }
 $branch = $branch -replace '/', '-'
 
-$logPath = "ai/prompts/$username/$branch.log"
+$logPath = "ai/prompts/$email/$branch.log"
 
 $logDir = Split-Path -Path $logPath -Parent
 if ($logDir) { New-Item -ItemType Directory -Path $logDir -Force | Out-Null }
