@@ -1,3 +1,16 @@
+2026-02-19 13:03:43
+The log file has the time as "2026-02-19 13.02.32" but we want "2026-02-19 13:02:32"
+
+2026-02-19 13:02:55
+Testing multi
+Line
+Prompt:
+
+- Ping
+
+2026-02-19 13:02:32
+testing prompt logging. ping
+
 2026-02-19 15:15:14
 ping
 
