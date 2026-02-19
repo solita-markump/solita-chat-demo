@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "hooks": {
+    "userPromptSubmitted": [
+      {
+        "type": "command",
+        "bash": "cat >> ai/prompts/prompt-log.jsonl",
+        "powershell": "$input | Add-Content -Path ai\\prompts\\prompt-log.jsonl",
+        "cwd": ".",
+        "timeoutSec": 5
+      }
+    ]
+  }
+}
