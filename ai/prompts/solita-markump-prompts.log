@@ -1,3 +1,8 @@
+2026-02-19 13.13.42
+Let's get the path out of the C:\Projects\solita-chat-demo\.github\hooks\prompt-log-path.txt
+
+Leave in just the "username" so "solita-markup" so the path is hardcoded in the script
+
 2026-02-19 13.07.40
 Extract the bash and powershell parts to their own scripts. Put them in scripts/ folder
 

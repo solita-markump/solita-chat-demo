@@ -17,11 +17,13 @@ $prompt = if ($obj -and $obj.prompt) {
 $prompt = ($prompt -replace "`r", "").Trim()
 if (-not $prompt) { exit 0 }
 
-$configPath = ".github\hooks\prompt-log-path.txt"
+$configPath = ".github\hooks\prompt-log-username"
 if (-not (Test-Path $configPath)) { exit 0 }
 
-$logPath = (Get-Content -Path $configPath -TotalCount 1).Trim()
-if (-not $logPath) { exit 0 }
+$username = (Get-Content -Path $configPath -TotalCount 1).Trim()
+if (-not $username) { exit 0 }
+
+$logPath = "ai/prompts/$username-prompts.log"
 
 $logDir = Split-Path -Path $logPath -Parent
 if ($logDir) { New-Item -ItemType Directory -Path $logDir -Force | Out-Null }

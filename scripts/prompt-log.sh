@@ -5,9 +5,10 @@ prompt="$(printf '%s' "$raw" | sed -n 's/.*"prompt"[[:space:]]*:[[:space:]]*"\([
 prompt="$(printf '%s' "$prompt" | sed 's/\r$//' | sed 's/[[:space:]]\+/ /g' | sed 's/^ *//;s/ *$//')"
 [ -n "$prompt" ] || exit 0
 
-config_file=".github/hooks/prompt-log-path.txt"
-log_path="$(head -n 1 "$config_file" 2>/dev/null | tr -d '\r')"
-[ -n "$log_path" ] || exit 0
+config_file=".github/hooks/prompt-log-username"
+username="$(head -n 1 "$config_file" 2>/dev/null | tr -d '\r' | sed 's/^ *//;s/ *$//')"
+[ -n "$username" ] || exit 0
+log_path="ai/prompts/${username}-prompts.log"
 
 mkdir -p "$(dirname "$log_path")"
 entry="$(date '+%Y-%m-%d %H:%M:%S')"$'\n'"$prompt"
