@@ -1,0 +1,16 @@
+2026-02-19 16:56:06
+yo
+
+2026-02-19 16:55:25
+You have not yet marked the task as complete using the task_complete tool. If you were planning, stop planning and start implementing. You aren't done until you have fully completed the task.
+
+IMPORTANT: Do NOT call task_complete if:
+- You have open questions or ambiguities - make good decisions and keep working
+- You encountered an error - try to resolve it or find an alternative approach
+- There are remaining steps - complete them first
+
+Keep working autonomously until the task is truly finished, then call task_complete.
+
+2026-02-19 16:55:18
+@scripts\prompt-log.ps1:5-15 Why is there this iffing?
+
