@@ -4,7 +4,6 @@
     "userPromptSubmitted": [
       {
         "type": "command",
-        "bash": "bash scripts/prompt-log.sh",
         "powershell": "& \".\\scripts\\prompt-log.ps1\"",
         "cwd": ".",
         "timeoutSec": 5
