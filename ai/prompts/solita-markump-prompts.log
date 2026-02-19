@@ -1,0 +1,19 @@
+2026-02-19 15:15:14
+ping
+
+2026-02-19 15:15:14
+testing the prompt logging.. ping.
+
+2026-02-19 15:15:14
+testing again ping.
+
+2026-02-19 15:15:14
+Let's improve the prompt logging:  
+- Last message to the top of the log file 
+- Change the log line format from this: "2026-02-19 10.56.43" to this "2026-02-19 | ping"
+
+2026-02-19 15:15:14
+Another ping
+
+2026-02-19 15:15:14
+Summarize the chat conversation and save it to .md in the repo
