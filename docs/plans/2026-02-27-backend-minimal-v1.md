@@ -87,8 +87,8 @@ Tests are required from the start; this task verifies endpoint contracts and inf
 ### Task 6: Add minimal backend run/test documentation to `README.md`
 The final task ensures first-time contributors can run and verify the backend without extra tribal knowledge.
 
-- [ ] Update `README.md` with backend startup flow and required environment variable configuration.
-- [ ] Add backend test execution instructions and local PostgreSQL expectations.
+- [x] Update `README.md` with backend startup flow and required environment variable configuration.
+- [x] Add backend test execution instructions and local PostgreSQL expectations.
 - **Commit**: `document backend run and test workflow`
 
 ## Notes and guardrails
