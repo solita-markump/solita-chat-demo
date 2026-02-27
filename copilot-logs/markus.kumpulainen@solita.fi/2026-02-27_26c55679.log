@@ -1,0 +1,11 @@
+2026-02-27T07:16:46.469Z [User]
+Let's create a backend plan for this project. First read the @architecture.md to understand the stack. I want a minimal implementation at first where there is only minimal endpoints to send an receive data. We want tests from the get go. We want domain driven design with slice architecture.
+
+2026-02-27T07:18:51.629Z [Agent]
+I drafted and saved the backend plan; for minimal v1, should we keep transport HTTP-only (`POST/GET /api/messages`) and defer SignalR, or include SignalR now?
+Choices:
+  - HTTP-only first, SignalR next slice (Recommended)
+  - Include SignalR in minimal v1
+
+2026-02-27T07:20:04.570Z [User]
+User selected: HTTP-only first, SignalR next slice (Recommended)
