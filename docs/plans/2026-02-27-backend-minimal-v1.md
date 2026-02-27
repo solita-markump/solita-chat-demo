@@ -66,8 +66,8 @@ This task anchors DDD-first behavior and ensures core message rules are enforced
 ### Task 3: Create initial DbUp migration and Dapper repository for messages
 Persistence should follow the selected stack (`PostgreSQL + DbUp + Dapper`) and support room/page-based message retrieval.
 
-- [ ] Create initial DbUp migration for the `messages` table and room-oriented query index(es).
-- [ ] Implement Dapper-based repository and connection factory in infrastructure.
+- [x] Create initial DbUp migration for the `messages` table and room-oriented query index(es).
+- [x] Implement Dapper-based repository and connection factory in infrastructure.
 - **Commit**: `add dbup migration and dapper message repository`
 
 ### Task 4: Implement minimal send/receive endpoints in separate feature slices

@@ -28,6 +28,29 @@ public sealed class ChatMessage
         DateTimeOffset createdAtUtc,
         DateTimeOffset? nowUtc = null)
     {
+        ValidateTimestamp(createdAtUtc, nowUtc);
+
+        return new ChatMessage(Guid.NewGuid(), roomId, authorName, text, createdAtUtc);
+    }
+
+    public static ChatMessage Rehydrate(
+        Guid id,
+        RoomId roomId,
+        AuthorName authorName,
+        MessageText text,
+        DateTimeOffset createdAtUtc)
+    {
+        if (id == Guid.Empty)
+        {
+            throw new ArgumentException("Id is required.", nameof(id));
+        }
+
+        ValidateTimestamp(createdAtUtc, null);
+        return new ChatMessage(id, roomId, authorName, text, createdAtUtc);
+    }
+
+    private static void ValidateTimestamp(DateTimeOffset createdAtUtc, DateTimeOffset? nowUtc)
+    {
         if (createdAtUtc == default)
         {
             throw new ArgumentException("CreatedAtUtc is required.", nameof(createdAtUtc));
@@ -43,7 +66,5 @@ public sealed class ChatMessage
         {
             throw new ArgumentOutOfRangeException(nameof(createdAtUtc), "CreatedAtUtc cannot be more than one minute in the future.");
         }
-
-        return new ChatMessage(Guid.NewGuid(), roomId, authorName, text, createdAtUtc);
     }
 }
