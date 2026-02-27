@@ -73,8 +73,8 @@ Persistence should follow the selected stack (`PostgreSQL + DbUp + Dapper`) and 
 ### Task 4: Implement minimal send/receive endpoints in separate feature slices
 This delivers the minimal v1 HTTP contract while preserving vertical slice boundaries.
 
-- [ ] Implement `POST /api/messages` slice with request model, validation, handler, and persistence call.
-- [ ] Implement `GET /api/messages?roomId=...` slice and register `GET /health` liveness endpoint.
+- [x] Implement `POST /api/messages` slice with request model, validation, handler, and persistence call.
+- [x] Implement `GET /api/messages?roomId=...` slice and register `GET /health` liveness endpoint.
 - **Commit**: `implement minimal message send receive endpoints`
 
 ### Task 5: Add domain and integration tests for all minimal endpoints
