@@ -59,8 +59,8 @@ Repository starts from docs only, so this task establishes the execution baselin
 ### Task 2: Implement `Chat` domain model and invariants
 This task anchors DDD-first behavior and ensures core message rules are enforced before persistence and API work.
 
-- [ ] Add `Chat` domain entities/value objects for messages and enforce invariants (required fields, bounds, timestamp rules).
-- [ ] Add domain tests for both valid message creation and invariant/validation failure paths.
+- [x] Add `Chat` domain entities/value objects for messages and enforce invariants (required fields, bounds, timestamp rules).
+- [x] Add domain tests for both valid message creation and invariant/validation failure paths.
 - **Commit**: `implement chat domain model and invariants`
 
 ### Task 3: Create initial DbUp migration and Dapper repository for messages
