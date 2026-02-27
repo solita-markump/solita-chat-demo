@@ -1,5 +1,9 @@
 # solita-chat-demo Copilot instructions
 
+## Git
+
+- All Git worktrees must be created under the repository root `.worktrees/` directory.
+
 ## Executing Plans
 
 When executing a plan from `docs/plans/`, follow these rules:

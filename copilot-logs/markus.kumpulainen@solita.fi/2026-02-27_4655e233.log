@@ -1,0 +1,4 @@
+2026-02-27T12:09:53.121Z [User]
+Add the folder .worktrees to gitignore.
+
+Add a section in copilot-instructions (under repo) that all worktrees must be created there
