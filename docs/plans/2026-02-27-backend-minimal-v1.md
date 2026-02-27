@@ -80,8 +80,8 @@ This delivers the minimal v1 HTTP contract while preserving vertical slice bound
 ### Task 5: Add domain and integration tests for all minimal endpoints
 Tests are required from the start; this task verifies endpoint contracts and infrastructure wiring against PostgreSQL.
 
-- [ ] Add API tests for success and validation/error responses on `POST /api/messages` and `GET /api/messages`.
-- [ ] Add PostgreSQL-backed integration tests that apply DbUp migrations before running endpoint scenarios.
+- [x] Add API tests for success and validation/error responses on `POST /api/messages` and `GET /api/messages`.
+- [x] Add PostgreSQL-backed integration tests that apply DbUp migrations before running endpoint scenarios.
 - **Commit**: `add domain and api integration tests`
 
 ### Task 6: Add minimal backend run/test documentation to `README.md`
