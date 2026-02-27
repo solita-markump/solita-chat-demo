@@ -52,8 +52,8 @@ Build the smallest backend that can **send and receive chat data** while establi
 ### Task 1: Scaffold backend solution and projects in slice-oriented layout
 Repository starts from docs only, so this task establishes the execution baseline for all following slices and tests.
 
-- [ ] Create `.NET 8` solution with projects for `Backend.Api`, `Backend.Domain`, `Backend.Infrastructure`, and feature slices.
-- [ ] Wire project references and baseline dependency injection composition in `Backend.Api`.
+- [x] Create `.NET 8` solution with projects for `Backend.Api`, `Backend.Domain`, `Backend.Infrastructure`, and feature slices.
+- [x] Wire project references and baseline dependency injection composition in `Backend.Api`.
 - **Commit**: `scaffold backend solution and projects`
 
 ### Task 2: Implement `Chat` domain model and invariants

@@ -139,3 +139,8 @@ vite.config.ts.timestamp-*
 
 # Local git worktrees
 .worktrees/
+
+# .NET build artifacts
+**/bin/
+**/obj/
+TestResults/
