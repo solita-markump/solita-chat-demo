@@ -1,6 +1,6 @@
 namespace Backend.Domain.Chat;
 
-public sealed class ChatMessage
+public sealed record ChatMessage
 {
     public Guid Id { get; }
 
