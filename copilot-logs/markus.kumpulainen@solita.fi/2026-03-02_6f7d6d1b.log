@@ -1,0 +1,30 @@
+2026-03-02T08:52:40.719Z [User]
+Do you follow copilot-instructions in planning mode as well?
+
+2026-03-02T08:54:44.938Z [User]
+Look at @.github\copilot-instructions.md and @.github\prompts\saveplan.prompt.md 
+
+I want to shift stuff from the save plan prompt to the instructions. Mainly I want that when we are planning we plan in commit size tasks. Then we can simplify the saveplan prompt to only have instructions to move the session plan to the repo.
+
+2026-03-02T08:54:59.051Z [Agent]
+Here's what I'm thinking:
+
+**Move to `copilot-instructions.md`** (new "Planning" section):
+- Plans should be structured in commit-sized tasks
+- Each task has a title, context/rationale, actionable checkbox steps, and a commit message
+- Preserve enough detail that a fresh agent can implement from the plan alone
+
+**Simplify `saveplan.prompt.md`** to just:
+1. Read the session plan
+2. Save it to `docs/plans/<YYYY-MM-DD>-<name>.md`
+
+The task structure template and "preserve context" guidance would live in the instructions instead.
+
+Does that split sound right to you?
+Choices:
+  - Yes, that split is what I want
+  - I want the template structure to stay in saveplan too (just duplicated)
+  - Let me clarify what I want differently
+
+2026-03-02T08:55:30.218Z [User]
+User selected: Yes, that split is what I want

@@ -4,6 +4,22 @@
 
 - All Git worktrees must be created under the repository root `.worktrees/` directory.
 
+## Planning
+
+When creating plans, structure them so a fresh agent with no prior context can implement the feature from the document alone:
+
+- **Commit-sized tasks.** Group implementation steps into tasks where each task = one commit.
+- **Preserve context.** Keep all rationale, technical details, and notes — don't strip them down to bare checkboxes.
+- **Task structure:**
+   ```
+   ### Task N: <Title>
+   <any relevant context, rationale, or technical notes for this task>
+
+   - [ ] Actionable step
+   - [ ] Actionable step
+   - **Commit**: `<short imperative commit message>`
+   ```
+
 ## Executing Plans
 
 When executing a plan from `docs/plans/`, follow these rules:
