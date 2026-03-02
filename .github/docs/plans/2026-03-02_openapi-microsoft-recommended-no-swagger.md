@@ -40,9 +40,9 @@
    - **Commit**: `document openapi and scalar usage`
 
 5. **Verify and close out**
-   - [ ] Run existing tests with `dotnet test .\SolitaChatDemo.sln -v minimal`.
-   - [ ] Confirm no regressions.
-   - [ ] Mark completed tasks in this plan.
+   - [x] Run existing tests with `dotnet test .\SolitaChatDemo.sln -v minimal`.
+   - [x] Confirm no regressions.
+   - [x] Mark completed tasks in this plan.
    - **Commit**: `verify openapi documentation integration`
 
 ## Notes
