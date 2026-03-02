@@ -26,8 +26,8 @@
    - [x] Return a message instance containing the DB-generated timestamp.
 
 3. **Add migration for DB timestamp default**
-   - [ ] Create a new embedded SQL migration script (next numeric prefix) to set a default on `messages.created_at_utc`.
-   - [ ] Preserve compatibility for existing rows and schema.
+   - [x] Create a new embedded SQL migration script (next numeric prefix) to set a default on `messages.created_at_utc`.
+   - [x] Preserve compatibility for existing rows and schema.
 
 4. **Update send-message feature surface**
    - [ ] Remove `CreatedAtUtc` from `SendMessageRequest`.
