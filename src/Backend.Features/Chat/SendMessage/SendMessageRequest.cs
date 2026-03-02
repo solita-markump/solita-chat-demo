@@ -3,8 +3,7 @@ namespace Backend.Features.Chat.SendMessage;
 public sealed record SendMessageRequest(
     string? RoomId,
     string? AuthorName,
-    string? Text,
-    DateTimeOffset? CreatedAtUtc);
+    string? Text);
 
 public sealed record SendMessageResponse(
     Guid Id,

@@ -30,10 +30,10 @@
    - [x] Preserve compatibility for existing rows and schema.
 
 4. **Update send-message feature surface**
-   - [ ] Remove `CreatedAtUtc` from `SendMessageRequest`.
-   - [ ] Remove endpoint validation for `createdAtUtc`.
-   - [ ] Update `SendMessageHandler` to use the new domain/repository flow.
-   - [ ] Keep or adjust `SendMessageResponse.CreatedAtUtc` based on API contract decision.
+   - [x] Remove `CreatedAtUtc` from `SendMessageRequest`.
+   - [x] Remove endpoint validation for `createdAtUtc`.
+   - [x] Update `SendMessageHandler` to use the new domain/repository flow.
+   - [x] Keep or adjust `SendMessageResponse.CreatedAtUtc` based on API contract decision.
 
 5. **Update tests**
    - [ ] Update domain tests that currently depend on caller-supplied timestamps.

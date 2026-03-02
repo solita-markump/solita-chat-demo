@@ -16,10 +16,8 @@ public sealed class SendMessageHandler
         var message = ChatMessage.Create(
             RoomId.Create(request.RoomId!),
             AuthorName.Create(request.AuthorName!),
-            MessageText.Create(request.Text!),
-            request.CreatedAtUtc!.Value);
+            MessageText.Create(request.Text!));
 
-        await _repository.SaveAsync(message, cancellationToken);
-        return message;
+        return await _repository.SaveAsync(message, cancellationToken);
     }
 }
