@@ -15,9 +15,9 @@
 
 ## Todos
 1. **Adjust domain creation model**
-   - [ ] Update `ChatMessage.Create(...)` to stop accepting external timestamp.
-   - [ ] Remove timestamp validation that is only relevant to caller-provided values.
-   - [ ] Keep `Rehydrate(...)` and UTC checks for DB-loaded data.
+   - [x] Update `ChatMessage.Create(...)` to stop accepting external timestamp.
+   - [x] Remove timestamp validation that is only relevant to caller-provided values.
+   - [x] Keep `Rehydrate(...)` and UTC checks for DB-loaded data.
 
 2. **Update persistence contract and implementation**
    - [ ] Change `IChatMessageRepository.SaveAsync` to return the persisted `ChatMessage` (or equivalent carrying generated timestamp).
