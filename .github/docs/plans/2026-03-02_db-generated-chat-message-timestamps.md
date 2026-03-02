@@ -45,3 +45,6 @@
 
 ## Decision
 - `POST /api/messages` will continue returning `createdAtUtc` immediately by reading the DB-generated value after insert.
+
+## Status
+- Completed at (UTC): 2026-03-02T12:43:35.494Z
