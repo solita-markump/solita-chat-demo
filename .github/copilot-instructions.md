@@ -13,7 +13,7 @@ When executing a plan from `.github/docs/plans/`, follow these rules:
 - **Commit after each task.** If task changed files, stage and commit with the task's **<Title>**:
    ```
    git add -A
-   git commit -m "<commit message from task>"
+   git commit -m "<title of the task>"
    ```
 - **Build before committing.** Run task build command; else use this file's **Build and Test** commands.
 - **Stop on failure.** Fix failing step before continuing.
