@@ -15,9 +15,9 @@
 
 ## Commit-sized tasks
 1. **Add OpenAPI and Scalar dependencies**
-   - [ ] Add `Microsoft.AspNetCore.OpenApi` to `src\Backend.Api\Backend.Api.csproj`.
-   - [ ] Add `Scalar.AspNetCore` to `src\Backend.Api\Backend.Api.csproj`.
-   - [ ] Ensure package restore succeeds.
+   - [x] Add `Microsoft.AspNetCore.OpenApi` to `src\Backend.Api\Backend.Api.csproj`.
+   - [x] Add `Scalar.AspNetCore` to `src\Backend.Api\Backend.Api.csproj`.
+   - [x] Ensure package restore succeeds.
    - **Commit**: `add openapi and scalar packages`
 
 2. **Wire OpenAPI services and development-only routes**
