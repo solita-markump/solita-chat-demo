@@ -20,10 +20,10 @@
    - [x] Keep `Rehydrate(...)` and UTC checks for DB-loaded data.
 
 2. **Update persistence contract and implementation**
-   - [ ] Change `IChatMessageRepository.SaveAsync` to return the persisted `ChatMessage` (or equivalent carrying generated timestamp).
-   - [ ] Update `DapperChatMessageRepository.SaveAsync` to insert without `created_at_utc` parameter.
-   - [ ] Use `RETURNING created_at_utc`.
-   - [ ] Return a message instance containing the DB-generated timestamp.
+   - [x] Change `IChatMessageRepository.SaveAsync` to return the persisted `ChatMessage` (or equivalent carrying generated timestamp).
+   - [x] Update `DapperChatMessageRepository.SaveAsync` to insert without `created_at_utc` parameter.
+   - [x] Use `RETURNING created_at_utc`.
+   - [x] Return a message instance containing the DB-generated timestamp.
 
 3. **Add migration for DB timestamp default**
    - [ ] Create a new embedded SQL migration script (next numeric prefix) to set a default on `messages.created_at_utc`.
