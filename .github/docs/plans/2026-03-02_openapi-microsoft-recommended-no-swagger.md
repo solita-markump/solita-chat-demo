@@ -21,10 +21,10 @@
    - **Commit**: `add openapi and scalar packages`
 
 2. **Wire OpenAPI services and development-only routes**
-   - [ ] Register `builder.Services.AddOpenApi()` in `src\Backend.Api\Program.cs`.
-   - [ ] Map `app.MapOpenApi()` only in Development.
-   - [ ] Map `app.MapScalarApiReference()` only in Development.
-   - [ ] Keep existing startup/migration behavior intact.
+   - [x] Register `builder.Services.AddOpenApi()` in `src\Backend.Api\Program.cs`.
+   - [x] Map `app.MapOpenApi()` only in Development.
+   - [x] Map `app.MapScalarApiReference()` only in Development.
+   - [x] Keep existing startup/migration behavior intact.
    - **Commit**: `wire built-in openapi and scalar routes`
 
 3. **Annotate chat minimal API endpoints for OpenAPI quality**
