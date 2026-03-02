@@ -36,9 +36,9 @@
    - [x] Keep or adjust `SendMessageResponse.CreatedAtUtc` based on API contract decision.
 
 5. **Update tests**
-   - [ ] Update domain tests that currently depend on caller-supplied timestamps.
-   - [ ] Update API endpoint tests to stop sending `createdAtUtc` in POST payloads.
-   - [ ] Verify POST response timestamp behavior and GET ordering/pagination assumptions.
+   - [x] Update domain tests that currently depend on caller-supplied timestamps.
+   - [x] Update API endpoint tests to stop sending `createdAtUtc` in POST payloads.
+   - [x] Verify POST response timestamp behavior and GET ordering/pagination assumptions.
 
 6. **Validate changes**
    - [ ] Run existing build and test suites for backend/domain/api projects to confirm no regressions.
