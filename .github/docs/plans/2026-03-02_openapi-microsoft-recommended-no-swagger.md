@@ -28,9 +28,9 @@
    - **Commit**: `wire built-in openapi and scalar routes`
 
 3. **Annotate chat minimal API endpoints for OpenAPI quality**
-   - [ ] Add tags/summary/description and response metadata to `src\Backend.Features\Chat\SendMessage\SendMessageEndpoint.cs`.
-   - [ ] Add tags/summary/description and response metadata to `src\Backend.Features\Chat\GetMessages\GetMessagesEndpoint.cs`.
-   - [ ] Keep validation and runtime behavior unchanged.
+   - [x] Add tags/summary/description and response metadata to `src\Backend.Features\Chat\SendMessage\SendMessageEndpoint.cs`.
+   - [x] Add tags/summary/description and response metadata to `src\Backend.Features\Chat\GetMessages\GetMessagesEndpoint.cs`.
+   - [x] Keep validation and runtime behavior unchanged.
    - **Commit**: `annotate chat endpoints for openapi docs`
 
 4. **Document local OpenAPI usage**
