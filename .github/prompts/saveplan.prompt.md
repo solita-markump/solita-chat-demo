@@ -3,5 +3,15 @@ agent: 'agent'
 description: 'Save the current session plan under the repo'
 ---
 
-1. Read the current session plan (`plan.md` from the session folder).
-2. Save it to `docs/plans/<YYYY-MM-DD>-<name>.md` (create the directory if needed). `<name>` is a short kebab-case summary derived from the plan title.
+1. Take the current session plan (`plan.md` from the session folder) and save it under `.github/docs/plans/` as is. Perserve all the details. The document should be self contained so a fresh agent with clear context should be able to implement the changes based on the plan.
+2. Name the plan to `<YYYY-MM-DD>_<kebab-case summary derived from the plan>.md`.
+3. Reorganize the todo section so each step is commit sized task. 
+   - Add checkboxes to the task items.
+   - Add short commit message for the task.
+   - See example template to follow:
+   ```
+   Task N: <Title>
+   - [ ] Actionable step
+   - [ ] Actionable step
+   - **Commit**: `<short imperative commit message>`
+   ```
