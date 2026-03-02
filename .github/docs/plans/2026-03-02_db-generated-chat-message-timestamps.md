@@ -41,7 +41,7 @@
    - [x] Verify POST response timestamp behavior and GET ordering/pagination assumptions.
 
 6. **Validate changes**
-   - [ ] Run existing build and test suites for backend/domain/api projects to confirm no regressions.
+   - [x] Run existing build and test suites for backend/domain/api projects to confirm no regressions.
 
 ## Decision
 - `POST /api/messages` will continue returning `createdAtUtc` immediately by reading the DB-generated value after insert.
