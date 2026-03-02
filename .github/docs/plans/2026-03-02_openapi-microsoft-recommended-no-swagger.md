@@ -34,9 +34,9 @@
    - **Commit**: `annotate chat endpoints for openapi docs`
 
 4. **Document local OpenAPI usage**
-   - [ ] Update `README.md` with OpenAPI JSON route.
-   - [ ] Update `README.md` with Scalar UI route.
-   - [ ] Note that documentation endpoints are Development-only.
+   - [x] Update `README.md` with OpenAPI JSON route.
+   - [x] Update `README.md` with Scalar UI route.
+   - [x] Note that documentation endpoints are Development-only.
    - **Commit**: `document openapi and scalar usage`
 
 5. **Verify and close out**

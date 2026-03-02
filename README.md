@@ -28,6 +28,12 @@ Backend API endpoints:
 - `GET /api/messages?roomId=<roomId>&pageSize=50&beforeUtc=<ISO-8601>`
 - `GET /health`
 
+Development-only API documentation:
+- OpenAPI JSON: `GET /openapi/v1.json`
+- Scalar UI: `/scalar/v1`
+
+The OpenAPI and Scalar endpoints are only mapped when running in `Development`.
+
 DbUp migrations are applied automatically on API startup.
 
 ### Run tests
