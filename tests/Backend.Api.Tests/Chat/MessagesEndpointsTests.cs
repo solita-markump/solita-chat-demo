@@ -22,8 +22,7 @@ public sealed class MessagesEndpointsTests : IClassFixture<PostgresApiFactory>
         var request = new SendMessageRequest(
             $"room-{Guid.NewGuid():N}",
             "markus",
-            "hello world",
-            DateTimeOffset.UtcNow);
+            "hello world");
 
         var response = await client.PostAsJsonAsync("/api/messages", request);
         var payload = await response.Content.ReadFromJsonAsync<SendMessageResponse>();
@@ -32,6 +31,8 @@ public sealed class MessagesEndpointsTests : IClassFixture<PostgresApiFactory>
         Assert.NotNull(payload);
         Assert.NotEqual(Guid.Empty, payload.Id);
         Assert.Equal(request.RoomId, payload.RoomId);
+        Assert.NotEqual(default, payload.CreatedAtUtc);
+        Assert.Equal(TimeSpan.Zero, payload.CreatedAtUtc.Offset);
     }
 
     [DockerFact]
@@ -42,8 +43,7 @@ public sealed class MessagesEndpointsTests : IClassFixture<PostgresApiFactory>
         var request = new SendMessageRequest(
             null,
             "markus",
-            "hello world",
-            DateTimeOffset.UtcNow);
+            "hello world");
 
         var response = await client.PostAsJsonAsync("/api/messages", request);
         using var payload = JsonDocument.Parse(await response.Content.ReadAsStringAsync());
@@ -59,9 +59,9 @@ public sealed class MessagesEndpointsTests : IClassFixture<PostgresApiFactory>
 
         var roomId = $"room-{Guid.NewGuid():N}";
 
-        await CreateMessageAsync(client, roomId, "first", DateTimeOffset.UtcNow.AddSeconds(-2));
-        await CreateMessageAsync(client, roomId, "second", DateTimeOffset.UtcNow.AddSeconds(-1));
-        await CreateMessageAsync(client, $"room-{Guid.NewGuid():N}", "other", DateTimeOffset.UtcNow);
+        await CreateMessageAsync(client, roomId, "first");
+        await CreateMessageAsync(client, roomId, "second");
+        await CreateMessageAsync(client, $"room-{Guid.NewGuid():N}", "other");
 
         var response = await client.GetAsync($"/api/messages?roomId={Uri.EscapeDataString(roomId)}&pageSize=10");
         var payload = await response.Content.ReadFromJsonAsync<GetMessagesResponse>();
@@ -70,6 +70,8 @@ public sealed class MessagesEndpointsTests : IClassFixture<PostgresApiFactory>
         Assert.NotNull(payload);
         Assert.True(payload.Items.Count >= 2);
         Assert.All(payload.Items, item => Assert.Equal(roomId, item.RoomId));
+        Assert.Equal(payload.Items[^1].CreatedAtUtc, payload.NextBeforeUtc);
+        Assert.True(payload.Items.Zip(payload.Items.Skip(1), (previous, current) => previous.CreatedAtUtc >= current.CreatedAtUtc).All(isOrdered => isOrdered));
     }
 
     [DockerFact]
@@ -90,11 +92,11 @@ public sealed class MessagesEndpointsTests : IClassFixture<PostgresApiFactory>
         return _factory.CreateClient();
     }
 
-    private static async Task CreateMessageAsync(HttpClient client, string roomId, string text, DateTimeOffset createdAtUtc)
+    private static async Task CreateMessageAsync(HttpClient client, string roomId, string text)
     {
         var response = await client.PostAsJsonAsync(
             "/api/messages",
-            new SendMessageRequest(roomId, "markus", text, createdAtUtc));
+            new SendMessageRequest(roomId, "markus", text));
 
         Assert.Equal(HttpStatusCode.Created, response.StatusCode);
     }
@@ -102,8 +104,7 @@ public sealed class MessagesEndpointsTests : IClassFixture<PostgresApiFactory>
     private sealed record SendMessageRequest(
         string? RoomId,
         string? AuthorName,
-        string? Text,
-        DateTimeOffset? CreatedAtUtc);
+        string? Text);
 
     private sealed record SendMessageResponse(
         Guid Id,

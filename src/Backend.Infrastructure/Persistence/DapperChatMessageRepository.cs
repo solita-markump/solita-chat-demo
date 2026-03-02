@@ -12,11 +12,12 @@ public sealed class DapperChatMessageRepository : IChatMessageRepository
         _connectionFactory = connectionFactory;
     }
 
-    public async Task SaveAsync(ChatMessage message, CancellationToken cancellationToken)
+    public async Task<ChatMessage> SaveAsync(ChatMessage message, CancellationToken cancellationToken)
     {
         const string sql = """
-            INSERT INTO messages (id, room_id, author_name, message_text, created_at_utc)
-            VALUES (@Id, @RoomId, @AuthorName, @MessageText, @CreatedAtUtc);
+            INSERT INTO messages (id, room_id, author_name, message_text)
+            VALUES (@Id, @RoomId, @AuthorName, @MessageText)
+            RETURNING created_at_utc;
             """;
 
         await using var connection = await _connectionFactory.CreateOpenConnectionAsync(cancellationToken);
@@ -27,12 +28,17 @@ public sealed class DapperChatMessageRepository : IChatMessageRepository
                 message.Id,
                 RoomId = message.RoomId.Value,
                 AuthorName = message.AuthorName.Value,
-                MessageText = message.Text.Value,
-                message.CreatedAtUtc
+                MessageText = message.Text.Value
             },
             cancellationToken: cancellationToken);
 
-        await connection.ExecuteAsync(command);
+        var createdAtUtc = await connection.QuerySingleAsync<DateTimeOffset>(command);
+        return ChatMessage.Rehydrate(
+            message.Id,
+            message.RoomId,
+            message.AuthorName,
+            message.Text,
+            createdAtUtc);
     }
 
     public async Task<IReadOnlyList<ChatMessage>> GetByRoomAsync(

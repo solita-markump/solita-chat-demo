@@ -63,11 +63,6 @@ public static class SendMessageEndpoint
             errors["text"] = new[] { "text is required." };
         }
 
-        if (request.CreatedAtUtc is null)
-        {
-            errors["createdAtUtc"] = new[] { "createdAtUtc is required." };
-        }
-
         return errors;
     }
 }
