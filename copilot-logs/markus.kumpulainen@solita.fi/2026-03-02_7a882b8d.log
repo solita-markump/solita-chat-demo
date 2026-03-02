@@ -1,0 +1,28 @@
+2026-03-02T08:07:07.282Z [User]
+Is there a reason or rationale why we are not using records in all the domain models? Some are readonly record struct and some just public sealed class ChatMessage
+
+2026-03-02T08:18:03.141Z [User]
+What would it mean to change ChatMessage.cs to be a record? How would it change the codebase?
+
+2026-03-02T08:18:32.408Z [User]
+What would it mean to change ChatMessage.cs to be a record? How would it change the codebase?
+
+2026-03-02T08:21:42.909Z [User]
+Search the web to reference your rationale on "semantically incorrect for DDD"
+
+2026-03-02T08:25:24.789Z [User]
+Find sources that are FOR record types as entities and list the benefits of that
+
+2026-03-02T08:26:43.606Z [User]
+continue
+
+2026-03-02T08:30:12.532Z [User]
+Analyze the content you have gathered and decide what is the way of the future?
+
+2026-03-02T08:32:42.998Z [User]
+Save this research into a .md file and invent a concise name for the file. Put it in doecs/research folder (create it)
+
+Summarize as much as you can but leave enough for a person reading the research to not have to visit every link. Once done open the research in vscode
+
+2026-03-02T08:37:23.111Z [User]
+ping
