@@ -1,0 +1,17 @@
+2026-03-02T12:16:36.477Z [User]
+Currently @src\Backend.Domain\Chat\ChatMessage.cs takes timestamps as input parameter. We want to generate the timestamps on dabase add instead.
+
+2026-03-02T12:19:00.133Z [Agent]
+Should POST /api/messages continue returning createdAtUtc immediately by reading the DB-generated value after insert?
+Choices:
+  - Yes, keep createdAtUtc in POST response (Recommended)
+  - No, omit createdAtUtc from POST response
+
+2026-03-02T12:19:03.611Z [User]
+User selected: Yes, keep createdAtUtc in POST response (Recommended)
+
+2026-03-02T12:19:49.248Z [User]
+@.github\prompts\saveplan.prompt.md
+
+2026-03-02T12:27:38.983Z [User]
+Read the instructions again and follow: @.github\prompts\saveplan.prompt.md
