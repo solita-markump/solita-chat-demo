@@ -33,9 +33,10 @@ Make local development startup repeatable and persistent so developers do not ne
 - [x] Document where the local connection string is configured and how to override it when needed.
 
 5. **Validate updated dev flow**
-- [ ] Run the backend with the updated local setup to verify migrations and startup behavior.
-- [ ] Run relevant tests/build commands to confirm changes are working as documented.
+- [x] Run the backend with the updated local setup to verify migrations and startup behavior.
+- [x] Run relevant tests/build commands to confirm changes are working as documented.
 
 ## Notes and confirmed decisions
 - Use `appsettings.Development.json` + `ConnectionStrings:Chat` as the persistent local development connection-string strategy.
 - Keep production behavior unchanged; only improve local development ergonomics.
+- Validation in this shared environment required an override port because host port `5432` was already occupied by another running PostgreSQL container.
