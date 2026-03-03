@@ -21,8 +21,8 @@ Make local development startup repeatable and persistent so developers do not ne
 - [x] Ensure planned changes keep production behavior unchanged and only improve local development ergonomics.
 
 2. **Add persistent local PostgreSQL setup**
-- [ ] Add a checked-in Docker Compose file for local PostgreSQL with fixed port mapping and env defaults.
-- [ ] Configure a named volume so database state persists across restarts.
+- [x] Add a checked-in Docker Compose file for local PostgreSQL with fixed port mapping and env defaults.
+- [x] Configure a named volume so database state persists across restarts.
 
 3. **Persist local development connection configuration**
 - [ ] Add `ConnectionStrings:Chat` to `src\Backend.Api\appsettings.Development.json` for local runs.
