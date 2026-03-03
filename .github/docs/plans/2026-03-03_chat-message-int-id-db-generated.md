@@ -23,10 +23,10 @@
    - [x] Rehydrate with returned `id` and update row mapping (`MessageRow.Id`) to `int`.
 
 3. **Add destructive migration to integer identity PK** (commit: `feat(db): recreate messages table with int identity id`)
-   - [ ] Add a new embedded migration script in `src\Backend.Infrastructure\Persistence\Migrations\Scripts\` (next numeric prefix).
-   - [ ] Recreate `messages` with `id` as integer identity primary key, `created_at_utc` default `NOW()`, and existing required columns.
-   - [ ] Recreate `idx_messages_room_created_at` on `(room_id, created_at_utc DESC, id DESC)`.
-   - [ ] Implement as destructive drop/recreate for `messages` (confirmed acceptable).
+   - [x] Add a new embedded migration script in `src\Backend.Infrastructure\Persistence\Migrations\Scripts\` (next numeric prefix).
+   - [x] Recreate `messages` with `id` as integer identity primary key, `created_at_utc` default `NOW()`, and existing required columns.
+   - [x] Recreate `idx_messages_room_created_at` on `(room_id, created_at_utc DESC, id DESC)`.
+   - [x] Implement as destructive drop/recreate for `messages` (confirmed acceptable).
 
 4. **Update API feature contracts and mapping** (commit: `refactor(features): expose int message ids`)
    - [ ] Change `SendMessageResponse.Id` and `GetMessagesItem.Id` from `Guid` to `int`.
