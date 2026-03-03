@@ -1,0 +1,17 @@
+2026-03-03T14:00:39.632Z [User]
+Time to wire up the frontend to the backend. Let's keep it still a MVP implementation so the front just sends the message to the backend with hard coded author.
+
+2026-03-03T14:03:23.680Z [Agent]
+For this MVP, how should the frontend set `roomId` when posting to `/api/messages`?
+Choices:
+  - Use a fixed roomId constant for now (Recommended)
+  - Derive roomId from the active browser tab URL/host
+
+2026-03-03T14:06:05.414Z [User]
+User selected: Use a fixed roomId constant for now (Recommended)
+
+2026-03-03T14:07:32.350Z [User]
+@.github\prompts\saveplan.prompt.md
+
+2026-03-03T14:10:41.937Z [User]
+modify the plan to implement the get messages also
