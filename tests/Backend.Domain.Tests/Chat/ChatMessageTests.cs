@@ -12,7 +12,7 @@ public class ChatMessageTests
             AuthorName.Create("markus"),
             MessageText.Create("Hello world"));
 
-        Assert.NotEqual(Guid.Empty, message.Id);
+        Assert.Equal(0, message.Id);
         Assert.Equal("room-1", message.RoomId.Value);
         Assert.Equal("markus", message.AuthorName.Value);
         Assert.Equal("Hello world", message.Text.Value);
@@ -39,7 +39,7 @@ public class ChatMessageTests
     {
         Assert.Throws<ArgumentException>(() =>
             ChatMessage.Rehydrate(
-                Guid.NewGuid(),
+                1,
                 RoomId.Create("room-1"),
                 AuthorName.Create("markus"),
                 MessageText.Create("Hello world"),
@@ -53,7 +53,7 @@ public class ChatMessageTests
 
         Assert.Throws<ArgumentException>(() =>
             ChatMessage.Rehydrate(
-                Guid.NewGuid(),
+                1,
                 RoomId.Create("room-1"),
                 AuthorName.Create("markus"),
                 MessageText.Create("Hello world"),

@@ -2,7 +2,7 @@ namespace Backend.Domain.Chat;
 
 public sealed record ChatMessage
 {
-    public Guid Id { get; }
+    public int Id { get; }
 
     public RoomId RoomId { get; }
 
@@ -12,7 +12,7 @@ public sealed record ChatMessage
 
     public DateTimeOffset CreatedAtUtc { get; }
 
-    private ChatMessage(Guid id, RoomId roomId, AuthorName authorName, MessageText text, DateTimeOffset createdAtUtc)
+    private ChatMessage(int id, RoomId roomId, AuthorName authorName, MessageText text, DateTimeOffset createdAtUtc)
     {
         Id = id;
         RoomId = roomId;
@@ -26,19 +26,19 @@ public sealed record ChatMessage
         AuthorName authorName,
         MessageText text)
     {
-        return new ChatMessage(Guid.NewGuid(), roomId, authorName, text, DateTimeOffset.UtcNow);
+        return new ChatMessage(0, roomId, authorName, text, DateTimeOffset.UtcNow);
     }
 
     public static ChatMessage Rehydrate(
-        Guid id,
+        int id,
         RoomId roomId,
         AuthorName authorName,
         MessageText text,
         DateTimeOffset createdAtUtc)
     {
-        if (id == Guid.Empty)
+        if (id <= 0)
         {
-            throw new ArgumentException("Id is required.", nameof(id));
+            throw new ArgumentOutOfRangeException(nameof(id), "Id must be a positive integer.");
         }
 
         ValidateTimestamp(createdAtUtc);

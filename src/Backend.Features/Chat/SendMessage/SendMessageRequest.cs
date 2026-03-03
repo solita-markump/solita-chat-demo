@@ -6,7 +6,7 @@ public sealed record SendMessageRequest(
     string? Text);
 
 public sealed record SendMessageResponse(
-    Guid Id,
+    int Id,
     string RoomId,
     string AuthorName,
     string Text,

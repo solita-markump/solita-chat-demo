@@ -6,7 +6,7 @@ public sealed record GetMessagesQuery(
     DateTimeOffset? BeforeUtc);
 
 public sealed record GetMessagesItem(
-    Guid Id,
+    int Id,
     string RoomId,
     string AuthorName,
     string Text,

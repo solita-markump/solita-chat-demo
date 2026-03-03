@@ -13,32 +13,32 @@
 
 ## Tasks
 1. **Refactor domain id type** (commit: `refactor(domain): switch chat message id to int`)
-   - [ ] Update `ChatMessage.Id`, constructor, and `Rehydrate(...)` id parameter from `Guid` to `int`.
-   - [ ] Remove Guid generation from `ChatMessage.Create(...)` and support the pre-persist state until DB assigns id.
-   - [ ] Replace `Guid.Empty` validation with integer id validation in rehydration (reject invalid non-positive ids).
+   - [x] Update `ChatMessage.Id`, constructor, and `Rehydrate(...)` id parameter from `Guid` to `int`.
+   - [x] Remove Guid generation from `ChatMessage.Create(...)` and support the pre-persist state until DB assigns id.
+   - [x] Replace `Guid.Empty` validation with integer id validation in rehydration (reject invalid non-positive ids).
 
 2. **Update repository save/read mapping for DB-generated ids** (commit: `refactor(persistence): use db-generated message ids`)
-   - [ ] In `DapperChatMessageRepository.SaveAsync`, remove `id` from `INSERT INTO messages (...) VALUES (...)`.
-   - [ ] Return both generated values via `RETURNING id, created_at_utc`.
-   - [ ] Rehydrate with returned `id` and update row mapping (`MessageRow.Id`) to `int`.
+   - [x] In `DapperChatMessageRepository.SaveAsync`, remove `id` from `INSERT INTO messages (...) VALUES (...)`.
+   - [x] Return both generated values via `RETURNING id, created_at_utc`.
+   - [x] Rehydrate with returned `id` and update row mapping (`MessageRow.Id`) to `int`.
 
 3. **Add destructive migration to integer identity PK** (commit: `feat(db): recreate messages table with int identity id`)
-   - [ ] Add a new embedded migration script in `src\Backend.Infrastructure\Persistence\Migrations\Scripts\` (next numeric prefix).
-   - [ ] Recreate `messages` with `id` as integer identity primary key, `created_at_utc` default `NOW()`, and existing required columns.
-   - [ ] Recreate `idx_messages_room_created_at` on `(room_id, created_at_utc DESC, id DESC)`.
-   - [ ] Implement as destructive drop/recreate for `messages` (confirmed acceptable).
+   - [x] Add a new embedded migration script in `src\Backend.Infrastructure\Persistence\Migrations\Scripts\` (next numeric prefix).
+   - [x] Recreate `messages` with `id` as integer identity primary key, `created_at_utc` default `NOW()`, and existing required columns.
+   - [x] Recreate `idx_messages_room_created_at` on `(room_id, created_at_utc DESC, id DESC)`.
+   - [x] Implement as destructive drop/recreate for `messages` (confirmed acceptable).
 
 4. **Update API feature contracts and mapping** (commit: `refactor(features): expose int message ids`)
-   - [ ] Change `SendMessageResponse.Id` and `GetMessagesItem.Id` from `Guid` to `int`.
-   - [ ] Ensure endpoint/handler projections continue mapping `message.Id` correctly.
-   - [ ] Keep created resource URL format unchanged: `/api/messages/{id}`.
+   - [x] Change `SendMessageResponse.Id` and `GetMessagesItem.Id` from `Guid` to `int`.
+   - [x] Ensure endpoint/handler projections continue mapping `message.Id` correctly.
+   - [x] Keep created resource URL format unchanged: `/api/messages/{id}`.
 
 5. **Update tests and verify** (commit: `test(chat): align tests with int ids`)
-   - [ ] Update `tests\Backend.Domain.Tests\Chat\ChatMessageTests.cs` for int id expectations.
-   - [ ] Update `tests\Backend.Api.Tests\Chat\MessagesEndpointsTests.cs` DTOs/assertions from `Guid` to `int`.
-   - [ ] Run:
-     - [ ] `dotnet test tests\Backend.Domain.Tests\Backend.Domain.Tests.csproj`
-     - [ ] `dotnet test tests\Backend.Api.Tests\Backend.Api.Tests.csproj`
+   - [x] Update `tests\Backend.Domain.Tests\Chat\ChatMessageTests.cs` for int id expectations.
+   - [x] Update `tests\Backend.Api.Tests\Chat\MessagesEndpointsTests.cs` DTOs/assertions from `Guid` to `int`.
+   - [x] Run:
+      - [x] `dotnet test tests\Backend.Domain.Tests\Backend.Domain.Tests.csproj`
+      - [x] `dotnet test tests\Backend.Api.Tests\Backend.Api.Tests.csproj`
 
 ## Decisions / notes / assumptions
 - Confirmed decision: migration may recreate/drop `messages` (existing message rows do not need to be preserved).
