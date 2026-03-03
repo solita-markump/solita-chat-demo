@@ -17,4 +17,4 @@
 
 ## Decisions / notes / assumptions
 
-## Plan deviations and reasoning
+## Deviations from the original plan while implementing

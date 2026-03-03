@@ -1,0 +1,14 @@
+2026-03-03T10:22:12.345Z [User]
+@src\Backend.Domain\Chat\ChatMessage.cs Currently we take in the guid id for the Chatmessage. We want to change it to be int id and the database will handle the incrementation.
+
+2026-03-03T10:25:26.985Z [Agent]
+I saved the plan. For the database change from UUID to int identity, should we preserve existing rows in `messages` during migration or is dropping/recreating `messages` acceptable?
+Choices:
+  - Preserve existing rows with migration (Recommended)
+  - Dropping/recreating `messages` is acceptable
+
+2026-03-03T10:25:49.106Z [User]
+User selected: Dropping/recreating `messages` is acceptable
+
+2026-03-03T10:27:16.821Z [User]
+@.github\prompts\saveplan.prompt.md
