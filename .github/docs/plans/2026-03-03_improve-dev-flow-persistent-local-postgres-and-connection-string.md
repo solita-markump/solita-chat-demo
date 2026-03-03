@@ -17,8 +17,8 @@ Make local development startup repeatable and persistent so developers do not ne
 
 ## Todos
 1. **Audit current dev-flow behavior**
-- [ ] Confirm README and `Backend.Api` configuration behavior for Docker startup and connection-string resolution.
-- [ ] Ensure planned changes keep production behavior unchanged and only improve local development ergonomics.
+- [x] Confirm README and `Backend.Api` configuration behavior for Docker startup and connection-string resolution.
+- [x] Ensure planned changes keep production behavior unchanged and only improve local development ergonomics.
 
 2. **Add persistent local PostgreSQL setup**
 - [ ] Add a checked-in Docker Compose file for local PostgreSQL with fixed port mapping and env defaults.
