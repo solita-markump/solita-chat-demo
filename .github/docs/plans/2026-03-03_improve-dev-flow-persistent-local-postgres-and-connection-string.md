@@ -29,8 +29,8 @@ Make local development startup repeatable and persistent so developers do not ne
 - [x] Keep environment-variable override behavior (`DATABASE_CONNECTION_STRING`) intact.
 
 4. **Update developer instructions**
-- [ ] Replace ad-hoc `docker run` and per-shell env export steps in `README.md` with repeatable `docker compose up -d` flow.
-- [ ] Document where the local connection string is configured and how to override it when needed.
+- [x] Replace ad-hoc `docker run` and per-shell env export steps in `README.md` with repeatable `docker compose up -d` flow.
+- [x] Document where the local connection string is configured and how to override it when needed.
 
 5. **Validate updated dev flow**
 - [ ] Run the backend with the updated local setup to verify migrations and startup behavior.

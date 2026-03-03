@@ -7,17 +7,20 @@ Between projects work: A chrome extension where every page you are on is a chat 
 - .NET 8 SDK
 - PostgreSQL (Docker recommended)
 
-### Start PostgreSQL locally (Docker example)
+### Start PostgreSQL locally (Docker Compose)
 ```powershell
-docker run --name solita-chat-postgres `
-  -e POSTGRES_USER=postgres `
-  -e POSTGRES_PASSWORD=postgres `
-  -e POSTGRES_DB=chatdb `
-  -p 5432:5432 `
-  -d postgres:16-alpine
+docker compose up -d
 ```
 
-### Configure and run backend
+Database data is persisted in the `solita-chat-postgres-data` named volume from `docker-compose.yml`.
+
+### Run backend
+```powershell
+dotnet run --project src\Backend.Api\Backend.Api.csproj
+```
+
+Local development uses `ConnectionStrings:Chat` in `src\Backend.Api\appsettings.Development.json`.
+To override it for the current shell, set `DATABASE_CONNECTION_STRING` before running:
 ```powershell
 $env:DATABASE_CONNECTION_STRING="Host=localhost;Port=5432;Database=chatdb;Username=postgres;Password=postgres"
 dotnet run --project src\Backend.Api\Backend.Api.csproj
