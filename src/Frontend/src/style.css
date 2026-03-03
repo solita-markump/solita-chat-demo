@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+/* Popup frame: fixed width/height for Chrome extension popup */
+html,
+body,
+#app {
+  width: 380px;
+  height: 520px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
