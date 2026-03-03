@@ -1,6 +1,39 @@
 # solita-chat-demo
 Between projects work: A chrome extension where every page you are on is a chat room
 
+## Frontend (Chrome extension popup)
+
+### Prerequisites
+- Node.js 20+
+- npm
+
+### Install dependencies
+```powershell
+cd src\Frontend
+npm install
+```
+
+### Build extension
+```powershell
+cd src\Frontend
+npm run build
+```
+
+Build output goes to `src\Frontend\dist`.
+
+### Load in Chrome (unpacked)
+1. Build the extension (see above).
+2. Open `chrome://extensions/` in Chrome.
+3. Enable **Developer mode** (toggle in top-right).
+4. Click **Load unpacked** and select the `src\Frontend\dist` folder.
+5. Click the extension icon in the toolbar to open the chat popup.
+
+### Type-check
+```powershell
+cd src\Frontend
+npm run type-check
+```
+
 ## Backend minimal v1
 
 ### Prerequisites

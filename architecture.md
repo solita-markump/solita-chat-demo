@@ -1,9 +1,9 @@
 # Architecture (Stack Decisions)
 
 ## Frontend stack
-- Chrome Extension
-- React SPA
-- Tailwind CSS
+- Chrome Extension (Manifest V3)
+- Vue 3 SPA (TypeScript)
+- Tailwind CSS v4
 - Vite
 
 ## Backend stack
