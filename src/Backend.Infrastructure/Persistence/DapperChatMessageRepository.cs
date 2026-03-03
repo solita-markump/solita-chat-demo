@@ -15,9 +15,9 @@ public sealed class DapperChatMessageRepository : IChatMessageRepository
     public async Task<ChatMessage> SaveAsync(ChatMessage message, CancellationToken cancellationToken)
     {
         const string sql = """
-            INSERT INTO messages (id, room_id, author_name, message_text)
-            VALUES (@Id, @RoomId, @AuthorName, @MessageText)
-            RETURNING created_at_utc;
+            INSERT INTO messages (room_id, author_name, message_text)
+            VALUES (@RoomId, @AuthorName, @MessageText)
+            RETURNING id AS Id, created_at_utc AS CreatedAtUtc;
             """;
 
         await using var connection = await _connectionFactory.CreateOpenConnectionAsync(cancellationToken);
@@ -25,20 +25,19 @@ public sealed class DapperChatMessageRepository : IChatMessageRepository
             sql,
             new
             {
-                message.Id,
                 RoomId = message.RoomId.Value,
                 AuthorName = message.AuthorName.Value,
                 MessageText = message.Text.Value
             },
             cancellationToken: cancellationToken);
 
-        var createdAtUtc = await connection.QuerySingleAsync<DateTime>(command);
+        var created = await connection.QuerySingleAsync<InsertedMessageRow>(command);
         return ChatMessage.Rehydrate(
-            message.Id,
+            created.Id,
             message.RoomId,
             message.AuthorName,
             message.Text,
-            ToUtcDateTimeOffset(createdAtUtc));
+            ToUtcDateTimeOffset(created.CreatedAtUtc));
     }
 
     public async Task<IReadOnlyList<ChatMessage>> GetByRoomAsync(
@@ -106,9 +105,13 @@ public sealed class DapperChatMessageRepository : IChatMessageRepository
     }
 
     private sealed record MessageRow(
-        Guid Id,
+        int Id,
         string RoomId,
         string AuthorName,
         string MessageText,
+        DateTime CreatedAtUtc);
+
+    private sealed record InsertedMessageRow(
+        int Id,
         DateTime CreatedAtUtc);
 }
