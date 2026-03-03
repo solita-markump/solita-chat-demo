@@ -22,7 +22,7 @@ dotnet run --project src\Backend.Api\Backend.Api.csproj
 Local development uses `ConnectionStrings:Chat` in `src\Backend.Api\appsettings.Development.json`.
 To override it for the current shell, set `DATABASE_CONNECTION_STRING` before running:
 ```powershell
-$env:DATABASE_CONNECTION_STRING="Host=localhost;Port=5432;Database=chatdb;Username=postgres;Password=postgres"
+$env:DATABASE_CONNECTION_STRING="Host=localhost;Port=55432;Database=chatdb;Username=postgres;Password=postgres"
 dotnet run --project src\Backend.Api\Backend.Api.csproj
 ```
 

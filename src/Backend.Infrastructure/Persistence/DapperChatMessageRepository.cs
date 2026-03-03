@@ -32,13 +32,13 @@ public sealed class DapperChatMessageRepository : IChatMessageRepository
             },
             cancellationToken: cancellationToken);
 
-        var createdAtUtc = await connection.QuerySingleAsync<DateTimeOffset>(command);
+        var createdAtUtc = await connection.QuerySingleAsync<DateTime>(command);
         return ChatMessage.Rehydrate(
             message.Id,
             message.RoomId,
             message.AuthorName,
             message.Text,
-            createdAtUtc);
+            ToUtcDateTimeOffset(createdAtUtc));
     }
 
     public async Task<IReadOnlyList<ChatMessage>> GetByRoomAsync(
@@ -58,7 +58,12 @@ public sealed class DapperChatMessageRepository : IChatMessageRepository
         }
 
         const string sql = """
-            SELECT id, room_id, author_name, message_text, created_at_utc
+            SELECT
+                id AS Id,
+                room_id AS RoomId,
+                author_name AS AuthorName,
+                message_text AS MessageText,
+                created_at_utc AS CreatedAtUtc
             FROM messages
             WHERE room_id = @RoomId
               AND (@BeforeUtc IS NULL OR created_at_utc < @BeforeUtc)
@@ -84,8 +89,20 @@ public sealed class DapperChatMessageRepository : IChatMessageRepository
                 RoomId.Create(row.RoomId),
                 AuthorName.Create(row.AuthorName),
                 MessageText.Create(row.MessageText),
-                row.CreatedAtUtc))
+                ToUtcDateTimeOffset(row.CreatedAtUtc)))
             .ToList();
+    }
+
+    private static DateTimeOffset ToUtcDateTimeOffset(DateTime value)
+    {
+        var utcDateTime = value.Kind switch
+        {
+            DateTimeKind.Utc => value,
+            DateTimeKind.Local => value.ToUniversalTime(),
+            _ => DateTime.SpecifyKind(value, DateTimeKind.Utc)
+        };
+
+        return new DateTimeOffset(utcDateTime);
     }
 
     private sealed record MessageRow(
@@ -93,5 +110,5 @@ public sealed class DapperChatMessageRepository : IChatMessageRepository
         string RoomId,
         string AuthorName,
         string MessageText,
-        DateTimeOffset CreatedAtUtc);
+        DateTime CreatedAtUtc);
 }
