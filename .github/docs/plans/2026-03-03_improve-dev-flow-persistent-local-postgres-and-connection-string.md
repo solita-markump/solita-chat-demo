@@ -25,8 +25,8 @@ Make local development startup repeatable and persistent so developers do not ne
 - [x] Configure a named volume so database state persists across restarts.
 
 3. **Persist local development connection configuration**
-- [ ] Add `ConnectionStrings:Chat` to `src\Backend.Api\appsettings.Development.json` for local runs.
-- [ ] Keep environment-variable override behavior (`DATABASE_CONNECTION_STRING`) intact.
+- [x] Add `ConnectionStrings:Chat` to `src\Backend.Api\appsettings.Development.json` for local runs.
+- [x] Keep environment-variable override behavior (`DATABASE_CONNECTION_STRING`) intact.
 
 4. **Update developer instructions**
 - [ ] Replace ad-hoc `docker run` and per-shell env export steps in `README.md` with repeatable `docker compose up -d` flow.
