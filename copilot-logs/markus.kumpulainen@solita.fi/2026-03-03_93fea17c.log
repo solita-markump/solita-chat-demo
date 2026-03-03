@@ -1,0 +1,2 @@
+2026-03-03T09:43:32.953Z [User]
+@.github\prompts\saveplan.prompt.md  Modify this prompt so we say that we want to combine tasks to be bigger commits. Currently we have many 1 file sized commits so we need them to be bigger but not too big. What would be the best instructions for this?
