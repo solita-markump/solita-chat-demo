@@ -18,9 +18,9 @@
    - [x] Replace `Guid.Empty` validation with integer id validation in rehydration (reject invalid non-positive ids).
 
 2. **Update repository save/read mapping for DB-generated ids** (commit: `refactor(persistence): use db-generated message ids`)
-   - [ ] In `DapperChatMessageRepository.SaveAsync`, remove `id` from `INSERT INTO messages (...) VALUES (...)`.
-   - [ ] Return both generated values via `RETURNING id, created_at_utc`.
-   - [ ] Rehydrate with returned `id` and update row mapping (`MessageRow.Id`) to `int`.
+   - [x] In `DapperChatMessageRepository.SaveAsync`, remove `id` from `INSERT INTO messages (...) VALUES (...)`.
+   - [x] Return both generated values via `RETURNING id, created_at_utc`.
+   - [x] Rehydrate with returned `id` and update row mapping (`MessageRow.Id`) to `int`.
 
 3. **Add destructive migration to integer identity PK** (commit: `feat(db): recreate messages table with int identity id`)
    - [ ] Add a new embedded migration script in `src\Backend.Infrastructure\Persistence\Migrations\Scripts\` (next numeric prefix).
