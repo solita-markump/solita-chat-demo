@@ -29,9 +29,9 @@
    - [x] Implement as destructive drop/recreate for `messages` (confirmed acceptable).
 
 4. **Update API feature contracts and mapping** (commit: `refactor(features): expose int message ids`)
-   - [ ] Change `SendMessageResponse.Id` and `GetMessagesItem.Id` from `Guid` to `int`.
-   - [ ] Ensure endpoint/handler projections continue mapping `message.Id` correctly.
-   - [ ] Keep created resource URL format unchanged: `/api/messages/{id}`.
+   - [x] Change `SendMessageResponse.Id` and `GetMessagesItem.Id` from `Guid` to `int`.
+   - [x] Ensure endpoint/handler projections continue mapping `message.Id` correctly.
+   - [x] Keep created resource URL format unchanged: `/api/messages/{id}`.
 
 5. **Update tests and verify** (commit: `test(chat): align tests with int ids`)
    - [ ] Update `tests\Backend.Domain.Tests\Chat\ChatMessageTests.cs` for int id expectations.
