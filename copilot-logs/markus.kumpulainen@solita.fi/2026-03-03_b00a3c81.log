@@ -1,0 +1,15 @@
+2026-03-03T06:49:51.559Z [User]
+@README.md We need to improve the dev flow. - Currenlty running a random docker and not permanent. - Need to add connection string to env every time running the proj
+
+2026-03-03T06:52:14.928Z [Agent]
+For the plan, which connection-string strategy should we target for local dev so you don’t have to set env vars every run?
+Choices:
+  - appsettings.Development.json with ConnectionStrings:Chat (Recommended)
+  - `.env`-based workflow
+  - `.NET user-secrets` one-time setup
+
+2026-03-03T06:52:51.309Z [User]
+User selected: appsettings.Development.json with ConnectionStrings:Chat (Recommended)
+
+2026-03-03T07:04:57.518Z [User]
+@.github\prompts\saveplan.prompt.md
