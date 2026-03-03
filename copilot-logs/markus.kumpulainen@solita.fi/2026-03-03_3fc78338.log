@@ -1,0 +1,17 @@
+2026-03-03T09:39:02.594Z [User]
+We want to change the message id to be integer and controlled by the database.
+
+2026-03-03T09:41:45.139Z [Agent]
+For the migration strategy, should we preserve existing rows and assign them new integer IDs, or is it acceptable to drop/recreate the messages table and lose existing data?
+Choices:
+  - Preserve existing rows and backfill integer IDs (Recommended)
+  - Drop and recreate messages table (data loss acceptable)
+
+2026-03-03T09:42:38.567Z [User]
+User selected: Drop and recreate messages table (data loss acceptable)
+
+2026-03-03T09:45:24.779Z [User]
+@.github\prompts\saveplan.prompt.md
+
+2026-03-03T09:48:19.916Z [User]
+make a git worktree out of the plan and cd into it.
