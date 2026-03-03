@@ -17,7 +17,7 @@ public sealed class DapperChatMessageRepository : IChatMessageRepository
         const string sql = """
             INSERT INTO messages (room_id, author_name, message_text)
             VALUES (@RoomId, @AuthorName, @MessageText)
-            RETURNING id, created_at_utc;
+            RETURNING id AS Id, created_at_utc AS CreatedAtUtc;
             """;
 
         await using var connection = await _connectionFactory.CreateOpenConnectionAsync(cancellationToken);

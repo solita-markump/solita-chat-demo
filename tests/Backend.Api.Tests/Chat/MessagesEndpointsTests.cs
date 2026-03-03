@@ -29,7 +29,7 @@ public sealed class MessagesEndpointsTests : IClassFixture<PostgresApiFactory>
 
         Assert.Equal(HttpStatusCode.Created, response.StatusCode);
         Assert.NotNull(payload);
-        Assert.NotEqual(Guid.Empty, payload.Id);
+        Assert.True(payload.Id > 0);
         Assert.Equal(request.RoomId, payload.RoomId);
         Assert.NotEqual(default, payload.CreatedAtUtc);
         Assert.Equal(TimeSpan.Zero, payload.CreatedAtUtc.Offset);
@@ -107,7 +107,7 @@ public sealed class MessagesEndpointsTests : IClassFixture<PostgresApiFactory>
         string? Text);
 
     private sealed record SendMessageResponse(
-        Guid Id,
+        int Id,
         string RoomId,
         string AuthorName,
         string Text,
@@ -118,7 +118,7 @@ public sealed class MessagesEndpointsTests : IClassFixture<PostgresApiFactory>
         DateTimeOffset? NextBeforeUtc);
 
     private sealed record GetMessagesItem(
-        Guid Id,
+        int Id,
         string RoomId,
         string AuthorName,
         string Text,

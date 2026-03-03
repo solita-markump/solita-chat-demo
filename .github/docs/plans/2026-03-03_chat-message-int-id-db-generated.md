@@ -34,11 +34,11 @@
    - [x] Keep created resource URL format unchanged: `/api/messages/{id}`.
 
 5. **Update tests and verify** (commit: `test(chat): align tests with int ids`)
-   - [ ] Update `tests\Backend.Domain.Tests\Chat\ChatMessageTests.cs` for int id expectations.
-   - [ ] Update `tests\Backend.Api.Tests\Chat\MessagesEndpointsTests.cs` DTOs/assertions from `Guid` to `int`.
-   - [ ] Run:
-     - [ ] `dotnet test tests\Backend.Domain.Tests\Backend.Domain.Tests.csproj`
-     - [ ] `dotnet test tests\Backend.Api.Tests\Backend.Api.Tests.csproj`
+   - [x] Update `tests\Backend.Domain.Tests\Chat\ChatMessageTests.cs` for int id expectations.
+   - [x] Update `tests\Backend.Api.Tests\Chat\MessagesEndpointsTests.cs` DTOs/assertions from `Guid` to `int`.
+   - [x] Run:
+      - [x] `dotnet test tests\Backend.Domain.Tests\Backend.Domain.Tests.csproj`
+      - [x] `dotnet test tests\Backend.Api.Tests\Backend.Api.Tests.csproj`
 
 ## Decisions / notes / assumptions
 - Confirmed decision: migration may recreate/drop `messages` (existing message rows do not need to be preserved).
