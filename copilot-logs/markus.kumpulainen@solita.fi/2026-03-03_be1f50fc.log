@@ -1,0 +1,34 @@
+2026-03-03T11:00:07.496Z [User]
+We need a frontend to this project. The front will be a chrome extension with the chat interface. Use Vue + Tailwind. Let's not yet connect it to the backend but rather we want a first minimal draft of the UI popup. The popup of the chat will open once the extension is clicked in browser. Take your time thinking and ask me any questions to get the full pictur
+
+2026-03-03T11:03:14.230Z [Agent]
+For the first popup draft, which scope do you want?
+Choices:
+  - Static chat shell only (header + mock messages + composer) (Recommended)
+  - Chat shell + current page URL/room preview
+  - Chat shell + URL/room preview + settings/login placeholders
+
+2026-03-03T11:03:57.863Z [User]
+User selected: Static chat shell only (header + mock messages + composer) (Recommended)
+
+2026-03-03T11:04:08.057Z [Agent]
+Where should I place the new extension project in the repo?
+Choices:
+  - frontend\extension (Recommended)
+  - src\Frontend.Extension
+  - extension
+
+2026-03-03T11:04:47.456Z [User]
+User responded: Just src\Frontend
+
+2026-03-03T11:04:53.132Z [Agent]
+Do you want the Vue extension scaffold in TypeScript or JavaScript?
+Choices:
+  - TypeScript (Recommended)
+  - JavaScript
+
+2026-03-03T11:06:15.444Z [User]
+User selected: TypeScript (Recommended)
+
+2026-03-03T11:08:21.249Z [User]
+@.github\prompts\saveplan.prompt.md
