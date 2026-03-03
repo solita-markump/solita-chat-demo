@@ -16,4 +16,5 @@ When executing a plan from `.github/docs/plans/`, follow these rules:
    git commit -m "<title of the task>"
    ```
 - **Build before committing.** Run task build command; else use this file's **Build and Test** commands.
-- **Stop on failure.** Fix failing step before continuing.
+- **Stop on failure.** If any step fails, fix it before moving to the next task.
+- **Document deviations.** If you must deviate from the plan, update it with what changed and why the original approach could not be followed.
