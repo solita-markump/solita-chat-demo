@@ -8,7 +8,12 @@ public static class GetMessagesEndpoint
 {
     public static IEndpointRouteBuilder MapGetMessagesEndpoint(this IEndpointRouteBuilder endpoints)
     {
-        endpoints.MapGet("/api/messages", HandleAsync);
+        endpoints.MapGet("/api/messages", HandleAsync)
+            .WithTags("Chat")
+            .WithSummary("Get messages")
+            .WithDescription("Returns paged chat messages for a room.")
+            .Produces<GetMessagesResponse>(StatusCodes.Status200OK)
+            .ProducesValidationProblem(StatusCodes.Status400BadRequest);
         return endpoints;
     }
 

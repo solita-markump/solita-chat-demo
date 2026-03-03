@@ -15,34 +15,34 @@
 
 ## Commit-sized tasks
 1. **Add OpenAPI and Scalar dependencies**
-   - [ ] Add `Microsoft.AspNetCore.OpenApi` to `src\Backend.Api\Backend.Api.csproj`.
-   - [ ] Add `Scalar.AspNetCore` to `src\Backend.Api\Backend.Api.csproj`.
-   - [ ] Ensure package restore succeeds.
+   - [x] Add `Microsoft.AspNetCore.OpenApi` to `src\Backend.Api\Backend.Api.csproj`.
+   - [x] Add `Scalar.AspNetCore` to `src\Backend.Api\Backend.Api.csproj`.
+   - [x] Ensure package restore succeeds.
    - **Commit**: `add openapi and scalar packages`
 
 2. **Wire OpenAPI services and development-only routes**
-   - [ ] Register `builder.Services.AddOpenApi()` in `src\Backend.Api\Program.cs`.
-   - [ ] Map `app.MapOpenApi()` only in Development.
-   - [ ] Map `app.MapScalarApiReference()` only in Development.
-   - [ ] Keep existing startup/migration behavior intact.
+   - [x] Register `builder.Services.AddOpenApi()` in `src\Backend.Api\Program.cs`.
+   - [x] Map `app.MapOpenApi()` only in Development.
+   - [x] Map `app.MapScalarApiReference()` only in Development.
+   - [x] Keep existing startup/migration behavior intact.
    - **Commit**: `wire built-in openapi and scalar routes`
 
 3. **Annotate chat minimal API endpoints for OpenAPI quality**
-   - [ ] Add tags/summary/description and response metadata to `src\Backend.Features\Chat\SendMessage\SendMessageEndpoint.cs`.
-   - [ ] Add tags/summary/description and response metadata to `src\Backend.Features\Chat\GetMessages\GetMessagesEndpoint.cs`.
-   - [ ] Keep validation and runtime behavior unchanged.
+   - [x] Add tags/summary/description and response metadata to `src\Backend.Features\Chat\SendMessage\SendMessageEndpoint.cs`.
+   - [x] Add tags/summary/description and response metadata to `src\Backend.Features\Chat\GetMessages\GetMessagesEndpoint.cs`.
+   - [x] Keep validation and runtime behavior unchanged.
    - **Commit**: `annotate chat endpoints for openapi docs`
 
 4. **Document local OpenAPI usage**
-   - [ ] Update `README.md` with OpenAPI JSON route.
-   - [ ] Update `README.md` with Scalar UI route.
-   - [ ] Note that documentation endpoints are Development-only.
+   - [x] Update `README.md` with OpenAPI JSON route.
+   - [x] Update `README.md` with Scalar UI route.
+   - [x] Note that documentation endpoints are Development-only.
    - **Commit**: `document openapi and scalar usage`
 
 5. **Verify and close out**
-   - [ ] Run existing tests with `dotnet test .\SolitaChatDemo.sln -v minimal`.
-   - [ ] Confirm no regressions.
-   - [ ] Mark completed tasks in this plan.
+   - [x] Run existing tests with `dotnet test .\SolitaChatDemo.sln -v minimal`.
+   - [x] Confirm no regressions.
+   - [x] Mark completed tasks in this plan.
    - **Commit**: `verify openapi documentation integration`
 
 ## Notes

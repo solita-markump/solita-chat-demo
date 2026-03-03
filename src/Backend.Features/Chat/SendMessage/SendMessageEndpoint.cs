@@ -8,7 +8,12 @@ public static class SendMessageEndpoint
 {
     public static IEndpointRouteBuilder MapSendMessageEndpoint(this IEndpointRouteBuilder endpoints)
     {
-        endpoints.MapPost("/api/messages", HandleAsync);
+        endpoints.MapPost("/api/messages", HandleAsync)
+            .WithTags("Chat")
+            .WithSummary("Send a message")
+            .WithDescription("Creates a new chat message for the specified room.")
+            .Produces<SendMessageResponse>(StatusCodes.Status201Created)
+            .ProducesValidationProblem(StatusCodes.Status400BadRequest);
         return endpoints;
     }
 
