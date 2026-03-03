@@ -13,9 +13,9 @@
 
 ## Tasks
 1. **Refactor domain id type** (commit: `refactor(domain): switch chat message id to int`)
-   - [ ] Update `ChatMessage.Id`, constructor, and `Rehydrate(...)` id parameter from `Guid` to `int`.
-   - [ ] Remove Guid generation from `ChatMessage.Create(...)` and support the pre-persist state until DB assigns id.
-   - [ ] Replace `Guid.Empty` validation with integer id validation in rehydration (reject invalid non-positive ids).
+   - [x] Update `ChatMessage.Id`, constructor, and `Rehydrate(...)` id parameter from `Guid` to `int`.
+   - [x] Remove Guid generation from `ChatMessage.Create(...)` and support the pre-persist state until DB assigns id.
+   - [x] Replace `Guid.Empty` validation with integer id validation in rehydration (reject invalid non-positive ids).
 
 2. **Update repository save/read mapping for DB-generated ids** (commit: `refactor(persistence): use db-generated message ids`)
    - [ ] In `DapperChatMessageRepository.SaveAsync`, remove `id` from `INSERT INTO messages (...) VALUES (...)`.
