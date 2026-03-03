@@ -10,11 +10,10 @@ When executing a plan from `.github/docs/plans/`, follow these rules:
 
 - **One task at a time.** Finish current task before starting next.
 - **Mark progress.** Set finished task checkboxes to `[x]` in the plan file.
-- **Commit after each task.** If task changed files, stage and commit with the task's **<Title>**:
+- **Commit after each task.** Take the **Commit** section and use it as a message.
    ```
    git add -A
-   git commit -m "<title of the task>"
+   git commit -m "<commit message from the plan's task>"
    ```
-- **Build before committing.** Run task build command; else use this file's **Build and Test** commands.
-- **Stop on failure.** If any step fails, fix it before moving to the next task.
-- **Document deviations.** If you must deviate from the plan, update it with what changed and why the original approach could not be followed.
+- **Document deviations.** If you must deviate from the plan, update the plan file with what changed and why the original approach could not be followed.
+- **Mark the plan as complete.** Once all the tasks are marked complete -> add completed timestamp after the title of the plan.

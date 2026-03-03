@@ -10,8 +10,9 @@
 - [ ] <Task item>
 - **Commit**: `short commit message`
 
-1. **<Task name>**
+2. **<Task name>**
 - [ ] <Task item>
 - [ ] <Task item>
+- **Commit**: `short commit message`
 
 ## Decisions / notes / assumptions
