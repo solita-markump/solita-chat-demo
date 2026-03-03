@@ -1,0 +1,10 @@
+2026-03-03T09:56:50.749Z [User]
+@.github\docs\plans\2026-03-02_db-generated-chat-message-timestamps.md Strip this and make an empty template .md out of it. Save it to .github/plans/template.md
+
+2026-03-03T10:01:19.587Z [User]
+I improved it. Read it again.
+
+In the @.github\copilot-instructions.md There are instructions to update the plan if we deviate from it. Add a place to the template for the reasoning.
+
+2026-03-03T10:05:16.465Z [User]
+modify the @.github\prompts\saveplan.prompt.md to just say that take the current plan and modify and save to the @.github\plans\template.md template and save to .github/docs/plans/`<YYYY-MM-DD>_<kebab-case summary derived from the plan>.md`
