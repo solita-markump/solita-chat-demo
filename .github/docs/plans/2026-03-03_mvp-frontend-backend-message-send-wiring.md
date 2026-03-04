@@ -35,8 +35,8 @@ Keep the current popup layout/components, and wire the core message flow to back
 - **Commit**: `feat(frontend): wire popup send action to backend`
 
 4. **Allow extension popup to reach backend**
-- [ ] Update `src/Frontend/public/manifest.json` host permissions for local backend origin used by MVP (for example `http://localhost:5027/*`).
-- [ ] Keep permission scope minimal to required MVP backend origin(s).
+- [x] Update `src/Frontend/public/manifest.json` host permissions for local backend origin used by MVP (for example `http://localhost:5027/*`).
+- [x] Keep permission scope minimal to required MVP backend origin(s).
 - **Commit**: `chore(extension): allow popup backend host access`
 
 5. **Validate MVP integration path**

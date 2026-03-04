@@ -7,5 +7,8 @@
     "default_popup": "popup.html",
     "default_title": "Solita Chat"
   },
-  "permissions": []
+  "permissions": [],
+  "host_permissions": [
+    "http://localhost:5027/*"
+  ]
 }
