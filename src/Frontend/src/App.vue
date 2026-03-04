@@ -1,14 +1,46 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { mockMessages, type ChatMessage } from '@/mock-data'
+import { ref, onMounted } from 'vue'
+import type { ChatMessage } from '@/mock-data'
 import ChatBubble from '@/components/ChatBubble.vue'
 import ChatComposer from '@/components/ChatComposer.vue'
+import { getMessages, sendMessage, ROOM_ID, AUTHOR_NAME } from '@/api/chat-api'
 
-const messages = ref<ChatMessage[]>([...mockMessages])
-let nextId = messages.value.length + 1
+const messages = ref<ChatMessage[]>([])
+const loadError = ref<string | null>(null)
+const sendError = ref<string | null>(null)
+const isLoading = ref(false)
 
-function handleSend(text: string) {
-  messages.value.push({ id: nextId++, author: 'You', text, isMine: true })
+onMounted(async () => {
+  isLoading.value = true
+  loadError.value = null
+  try {
+    const data = await getMessages(ROOM_ID)
+    messages.value = data.items.map((item) => ({
+      id: item.id,
+      author: item.authorName,
+      text: item.text,
+      isMine: item.authorName === AUTHOR_NAME,
+    }))
+  } catch {
+    loadError.value = 'Could not load messages. Is the backend running?'
+  } finally {
+    isLoading.value = false
+  }
+})
+
+async function handleSend(text: string) {
+  sendError.value = null
+  try {
+    const item = await sendMessage(ROOM_ID, AUTHOR_NAME, text)
+    messages.value.push({
+      id: item.id,
+      author: item.authorName,
+      text: item.text,
+      isMine: item.authorName === AUTHOR_NAME,
+    })
+  } catch {
+    sendError.value = 'Could not send message. Please try again.'
+  }
 }
 </script>
 
@@ -21,7 +53,12 @@ function handleSend(text: string) {
 
     <!-- Message list -->
     <main class="flex flex-1 flex-col gap-2 overflow-y-auto p-3">
-      <ChatBubble v-for="msg in messages" :key="msg.id" :message="msg" />
+      <p v-if="isLoading" class="text-center text-xs text-gray-400">Loading…</p>
+      <p v-else-if="loadError" class="text-center text-xs text-red-500">{{ loadError }}</p>
+      <template v-else>
+        <ChatBubble v-for="msg in messages" :key="msg.id" :message="msg" />
+      </template>
+      <p v-if="sendError" class="text-center text-xs text-red-500">{{ sendError }}</p>
     </main>
 
     <!-- Composer -->
