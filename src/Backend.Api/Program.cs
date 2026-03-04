@@ -5,6 +5,16 @@ using Scalar.AspNetCore;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddBackendServices(builder.Configuration);
 builder.Services.AddOpenApi();
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy
+            .WithOrigins("http://localhost:5173", "http://127.0.0.1:5173")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
 
 var app = builder.Build();
 
@@ -14,6 +24,7 @@ using (var scope = app.Services.CreateScope())
     migrationRunner.RunMigrations();
 }
 
+app.UseCors();
 app.MapBackendEndpoints();
 
 if (app.Environment.IsDevelopment())

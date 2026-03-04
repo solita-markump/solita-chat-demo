@@ -45,6 +45,8 @@ web_modules/
 
 # TypeScript cache
 *.tsbuildinfo
+src/Frontend/src/**/*.vue.js
+src/Frontend/src/**/*.vue.js.map
 
 # Optional npm cache directory
 .npm

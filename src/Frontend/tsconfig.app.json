@@ -13,6 +13,7 @@
     "paths": {
       "@/*": ["./src/*"]
     },
+    "noEmit": true,
     "sourceMap": true,
     "baseUrl": "."
   },

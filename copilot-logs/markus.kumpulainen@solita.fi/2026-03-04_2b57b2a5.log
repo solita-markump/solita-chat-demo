@@ -1,0 +1,10 @@
+2026-03-04T11:37:23.124Z [User]
+Read the previously implemented plan @.github\docs\plans\2026-03-03_mvp-frontend-backend-message-send-wiring.md 
+
+Currently I'm getting cors error when running npm run dev and trying to test the chat
+
+2026-03-04T11:51:33.557Z [User]
+Why do I have App.vue and App.vue.js and App.vue.js.map in frontend/src
+
+2026-03-04T11:54:34.930Z [User]
+yes
