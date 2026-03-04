@@ -1,4 +1,4 @@
-# Implementation Plan: MVP frontend-backend message flow wiring
+# Implementation Plan: MVP frontend-backend message flow wiring — completed 2026-03-04
 
 ## Problem
 Frontend popup chat currently uses local mock data and does not call the backend for listing or sending messages.  
@@ -40,9 +40,9 @@ Keep the current popup layout/components, and wire the core message flow to back
 - **Commit**: `chore(extension): allow popup backend host access`
 
 5. **Validate MVP integration path**
-- [ ] Run frontend validation (`npm run type-check` and `npm run build` in `src/Frontend`).
-- [ ] Run backend locally and verify popup load fetches from `GET /api/messages` and send creates message through `POST /api/messages`.
-- [ ] Update README only if needed to document MVP frontend constants/config assumptions.
+- [x] Run frontend validation (`npm run type-check` and `npm run build` in `src/Frontend`).
+- [x] Run backend locally and verify popup load fetches from `GET /api/messages` and send creates message through `POST /api/messages`.
+- [x] Update README only if needed to document MVP frontend constants/config assumptions.
 - **Commit**: `chore: validate mvp frontend-backend message flow`
 
 ## Decisions / notes / assumptions

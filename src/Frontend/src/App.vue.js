@@ -1,11 +1,44 @@
-import { ref } from 'vue';
-import { mockMessages } from '@/mock-data';
+import { ref, onMounted } from 'vue';
 import ChatBubble from '@/components/ChatBubble.vue';
 import ChatComposer from '@/components/ChatComposer.vue';
-const messages = ref([...mockMessages]);
-let nextId = messages.value.length + 1;
-function handleSend(text) {
-    messages.value.push({ id: nextId++, author: 'You', text, isMine: true });
+import { getMessages, sendMessage, ROOM_ID, AUTHOR_NAME } from '@/api/chat-api';
+const messages = ref([]);
+const loadError = ref(null);
+const sendError = ref(null);
+const isLoading = ref(false);
+onMounted(async () => {
+    isLoading.value = true;
+    loadError.value = null;
+    try {
+        const data = await getMessages(ROOM_ID);
+        messages.value = data.items.map((item) => ({
+            id: item.id,
+            author: item.authorName,
+            text: item.text,
+            isMine: item.authorName === AUTHOR_NAME,
+        }));
+    }
+    catch {
+        loadError.value = 'Could not load messages. Is the backend running?';
+    }
+    finally {
+        isLoading.value = false;
+    }
+});
+async function handleSend(text) {
+    sendError.value = null;
+    try {
+        const item = await sendMessage(ROOM_ID, AUTHOR_NAME, text);
+        messages.value.push({
+            id: item.id,
+            author: item.authorName,
+            text: item.text,
+            isMine: item.authorName === AUTHOR_NAME,
+        });
+    }
+    catch {
+        sendError.value = 'Could not send message. Please try again.';
+    }
 }
 debugger; /* PartiallyEnd: #3632/scriptSetup.vue */
 const __VLS_ctx = {};
@@ -23,17 +56,36 @@ __VLS_asFunctionalElement(__VLS_intrinsicElements.h1, __VLS_intrinsicElements.h1
 __VLS_asFunctionalElement(__VLS_intrinsicElements.main, __VLS_intrinsicElements.main)({
     ...{ class: "flex flex-1 flex-col gap-2 overflow-y-auto p-3" },
 });
-for (const [msg] of __VLS_getVForSourceType((__VLS_ctx.messages))) {
-    /** @type {[typeof ChatBubble, ]} */ ;
-    // @ts-ignore
-    const __VLS_0 = __VLS_asFunctionalComponent(ChatBubble, new ChatBubble({
-        key: (msg.id),
-        message: (msg),
-    }));
-    const __VLS_1 = __VLS_0({
-        key: (msg.id),
-        message: (msg),
-    }, ...__VLS_functionalComponentArgsRest(__VLS_0));
+if (__VLS_ctx.isLoading) {
+    __VLS_asFunctionalElement(__VLS_intrinsicElements.p, __VLS_intrinsicElements.p)({
+        ...{ class: "text-center text-xs text-gray-400" },
+    });
+}
+else if (__VLS_ctx.loadError) {
+    __VLS_asFunctionalElement(__VLS_intrinsicElements.p, __VLS_intrinsicElements.p)({
+        ...{ class: "text-center text-xs text-red-500" },
+    });
+    (__VLS_ctx.loadError);
+}
+else {
+    for (const [msg] of __VLS_getVForSourceType((__VLS_ctx.messages))) {
+        /** @type {[typeof ChatBubble, ]} */ ;
+        // @ts-ignore
+        const __VLS_0 = __VLS_asFunctionalComponent(ChatBubble, new ChatBubble({
+            key: (msg.id),
+            message: (msg),
+        }));
+        const __VLS_1 = __VLS_0({
+            key: (msg.id),
+            message: (msg),
+        }, ...__VLS_functionalComponentArgsRest(__VLS_0));
+    }
+}
+if (__VLS_ctx.sendError) {
+    __VLS_asFunctionalElement(__VLS_intrinsicElements.p, __VLS_intrinsicElements.p)({
+        ...{ class: "text-center text-xs text-red-500" },
+    });
+    (__VLS_ctx.sendError);
 }
 /** @type {[typeof ChatComposer, ]} */ ;
 // @ts-ignore
@@ -71,6 +123,15 @@ var __VLS_5;
 /** @type {__VLS_StyleScopedClasses['gap-2']} */ ;
 /** @type {__VLS_StyleScopedClasses['overflow-y-auto']} */ ;
 /** @type {__VLS_StyleScopedClasses['p-3']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-center']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-xs']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-gray-400']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-center']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-xs']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-red-500']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-center']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-xs']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-red-500']} */ ;
 var __VLS_dollars;
 const __VLS_self = (await import('vue')).defineComponent({
     setup() {
@@ -78,6 +139,9 @@ const __VLS_self = (await import('vue')).defineComponent({
             ChatBubble: ChatBubble,
             ChatComposer: ChatComposer,
             messages: messages,
+            loadError: loadError,
+            sendError: sendError,
+            isLoading: isLoading,
             handleSend: handleSend,
         };
     },
