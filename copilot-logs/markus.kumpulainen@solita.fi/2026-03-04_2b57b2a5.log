@@ -8,3 +8,9 @@ Why do I have App.vue and App.vue.js and App.vue.js.map in frontend/src
 
 2026-03-04T11:54:34.930Z [User]
 yes
+
+2026-03-04T11:58:25.667Z [User]
+In the plan I thought we implemented a 5sec polling on the messages but I cant seem to find it. Is it implemented?
+
+2026-03-04T11:58:58.369Z [User]
+yes add

@@ -45,6 +45,8 @@ web_modules/
 
 # TypeScript cache
 *.tsbuildinfo
+src/Frontend/src/**/*.js
+src/Frontend/src/**/*.js.map
 src/Frontend/src/**/*.vue.js
 src/Frontend/src/**/*.vue.js.map
 

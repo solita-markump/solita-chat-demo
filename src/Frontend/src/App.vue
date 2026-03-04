@@ -1,18 +1,35 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import type { ChatMessage } from '@/mock-data'
 import ChatBubble from '@/components/ChatBubble.vue'
 import ChatComposer from '@/components/ChatComposer.vue'
-import { getMessages, sendMessage, ROOM_ID, AUTHOR_NAME } from '@/api/chat-api'
+import {
+  getMessages,
+  sendMessage,
+  ROOM_ID,
+  AUTHOR_NAME,
+  MESSAGES_POLL_INTERVAL_MS,
+} from '@/api/chat-api'
 
 const messages = ref<ChatMessage[]>([])
 const loadError = ref<string | null>(null)
 const sendError = ref<string | null>(null)
 const isLoading = ref(false)
 
-onMounted(async () => {
-  isLoading.value = true
-  loadError.value = null
+let isRefreshing = false
+let pollTimer: ReturnType<typeof setInterval> | undefined
+
+async function refreshMessages(showLoading: boolean = false) {
+  if (isRefreshing) {
+    return
+  }
+
+  isRefreshing = true
+
+  if (showLoading) {
+    isLoading.value = true
+  }
+
   try {
     const data = await getMessages(ROOM_ID)
     messages.value = data.items.map((item) => ({
@@ -21,10 +38,27 @@ onMounted(async () => {
       text: item.text,
       isMine: item.authorName === AUTHOR_NAME,
     }))
+    loadError.value = null
   } catch {
     loadError.value = 'Could not load messages. Is the backend running?'
   } finally {
-    isLoading.value = false
+    if (showLoading) {
+      isLoading.value = false
+    }
+    isRefreshing = false
+  }
+}
+
+onMounted(async () => {
+  await refreshMessages(true)
+  pollTimer = setInterval(() => {
+    void refreshMessages()
+  }, MESSAGES_POLL_INTERVAL_MS)
+})
+
+onUnmounted(() => {
+  if (pollTimer !== undefined) {
+    clearInterval(pollTimer)
   }
 })
 

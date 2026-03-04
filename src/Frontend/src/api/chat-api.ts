@@ -2,6 +2,7 @@ export const BACKEND_BASE_URL = 'http://localhost:5027'
 export const ROOM_ID = 'general'
 export const AUTHOR_NAME = 'You'
 export const PAGE_SIZE = 50
+export const MESSAGES_POLL_INTERVAL_MS = 5000
 
 // --- Response models ---
 
