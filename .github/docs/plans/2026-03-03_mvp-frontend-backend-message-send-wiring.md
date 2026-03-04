@@ -16,21 +16,22 @@ Keep the current popup layout/components, and wire the core message flow to back
 
 ## Tasks
 1. **Create frontend API client for message fetch/send**
-- [ ] Add `src/Frontend/src/api/chat-api.ts` with typed request/response models for `GET /api/messages` and `POST /api/messages`.
-- [ ] Add MVP constants in frontend (backend base URL, fixed `roomId`, fixed `authorName`, initial `pageSize`) and use them in API calls.
-- [ ] Expose `getMessages` and `sendMessage` helpers for popup use.
+- [x] Add `src/Frontend/src/api/chat-api.ts` with typed request/response models for `GET /api/messages` and `POST /api/messages`.
+- [x] Add MVP constants in frontend (backend base URL, fixed `roomId`, fixed `authorName`, initial `pageSize`) and use them in API calls.
+- [x] Expose `getMessages` and `sendMessage` helpers for popup use.
 - **Commit**: `feat(frontend): add mvp chat api client for get and send`
 
 2. **Wire initial message loading in popup app**
-- [ ] Update `src/Frontend/src/App.vue` to load messages on mount using `getMessages` for the fixed room id.
-- [ ] Map `GET /api/messages` response items to the existing `ChatMessage` UI model and keep current bubble rendering.
-- [ ] Add minimal user-visible loading/error state for fetch failures while preserving existing UI structure.
+- [x] Update `src/Frontend/src/App.vue` to load messages on mount using `getMessages` for the fixed room id.
+- [x] Map `GET /api/messages` response items to the existing `ChatMessage` UI model and keep current bubble rendering.
+- [x] Add minimal user-visible loading/error state for fetch failures while preserving existing UI structure.
 - **Commit**: `feat(frontend): load popup messages from backend`
+- **Deviation**: Tasks 2 and 3 were implemented together in one App.vue edit since load and send wiring are tightly coupled in the same component. Task 2 commit covers the full App.vue rewrite; task 3 commit below is a plan-file marker.
 
 3. **Wire composer send flow in popup app**
-- [ ] Update `src/Frontend/src/App.vue` `handleSend` to async-call `sendMessage` instead of only local push.
-- [ ] Map backend response fields (`id`, `authorName`, `text`) to `ChatMessage` and keep list ordering consistent with loaded messages.
-- [ ] Add minimal user-visible error state for send failures while preserving existing UI structure.
+- [x] Update `src/Frontend/src/App.vue` `handleSend` to async-call `sendMessage` instead of only local push.
+- [x] Map backend response fields (`id`, `authorName`, `text`) to `ChatMessage` and keep list ordering consistent with loaded messages.
+- [x] Add minimal user-visible error state for send failures while preserving existing UI structure.
 - **Commit**: `feat(frontend): wire popup send action to backend`
 
 4. **Allow extension popup to reach backend**
