@@ -32,12 +32,18 @@ async function refreshMessages(showLoading: boolean = false) {
 
   try {
     const data = await getMessages(ROOM_ID)
-    messages.value = data.items.map((item) => ({
-      id: item.id,
-      author: item.authorName,
-      text: item.text,
-      isMine: item.authorName === AUTHOR_NAME,
-    }))
+    messages.value = data.items
+      .slice()
+      .sort((a, b) => {
+        const timeDiff = new Date(a.createdAtUtc).getTime() - new Date(b.createdAtUtc).getTime()
+        return timeDiff !== 0 ? timeDiff : a.id - b.id
+      })
+      .map((item) => ({
+        id: item.id,
+        author: item.authorName,
+        text: item.text,
+        isMine: item.authorName === AUTHOR_NAME,
+      }))
     loadError.value = null
   } catch {
     loadError.value = 'Could not load messages. Is the backend running?'
